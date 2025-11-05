@@ -4,34 +4,73 @@
 <meta charset="UTF-8">
 <title>Voice Sample Test</title>
 <style>
-  table { border-collapse: collapse; width: 60%; margin: auto; }
-  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-  th { background-color: #f2f2f2; }
-  audio { width: 200px; }
+  body {
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  table { 
+    border-collapse: collapse; 
+    width: 60%; 
+    margin: auto; 
+  }
+  th, td { 
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: center; 
+  }
+  th { 
+    background-color: #f2f2f2; 
+  }
+  audio.sample { 
+    width: 180px; 
+    vertical-align: middle;
+  }
+  audio.voice {
+    width: 340px; /* 표 안 오디오 넓힘 */
+  }
+  .content {
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    line-height: 1.6;
+  }
+  .note {
+    text-align: center;
+    color: #555;
+    margin-top: 10px;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
 
 <h2 style="text-align:center;">음성 선호도 조사</h2>
-<p style="text-align:center;">
 
-<div style="width:60%; margin:auto; text-align:left;">
+<div class="content">
 
-현재 <b>성우의 음성을 선정</b>하고 있습니다.<br>
-아래의 <b>sample.wav</b>을 먼저 청취하신 후, A~J Voice Sample을 들어보세요. 
-</p>
+  <p>
+    현재 <b>성우의 음성을 선정</b>하고 있습니다.<br>
+    아래의 <b>Sample.wav</b>을 먼저 청취하신 후, A~J Voice Sample을 들어보세요. 
+  </p>
 
-    🎵 <b>Sample.wav</b><br><br>
+  <p>
+    🎵 <b>Sample.wav</b>
+    <audio class="sample" controls src="sample.wav"></audio>
+  </p>
 
+  <p>
     ✅ 위 샘플은 고객에게 반응이 좋았던 사례입니다.<br>
-    선정기준에 부합하고, 샘플보다 조금 더 젊은 느낌의 음색을 선택해주세요.<br><br>
+    선정 기준에 부합하고, 샘플보다 조금 더 젊은 느낌의 음색을 선택해주세요.
+  </p>
 
-    <b>📌선정 기준</b><br>
+  <p>
+    <b>📌 선정 기준</b><br>
     1. 자연스럽고 안정된 발성<br>
-    2. 제품을 차분하게 설명하거나 Q&A를 진행하는 듯한 편안한 전달 방식<br><br>
+    2. 제품을 차분하게 설명하거나 Q&A를 진행하는 듯한 편안한 전달 방식
+  </p>
 
-  </div>
 </div>
+
+<br>
 
 <table id="voiceTable">
   <tr>
@@ -40,27 +79,29 @@
     <th>Select</th>
   </tr>
 
-  <tr><td>A</td><td><audio controls src="KOK_CC_F_01.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="A"></td></tr>
-  <tr><td>B</td><td><audio controls src="KOK_CC_F_02.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="B"></td></tr>
-  <tr><td>C</td><td><audio controls src="KOK_CC_F_03.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="C"></td></tr>
-  <tr><td>D</td><td><audio controls src="KOK_CC_F_04.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="D"></td></tr>
-  <tr><td>E</td><td><audio controls src="KOK_CC_F_05.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="E"></td></tr>
-  <tr><td>F</td><td><audio controls src="KOK_CC_F_06.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="F"></td></tr>
-  <tr><td>G</td><td><audio controls src="KOK_CC_F_07.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="G"></td></tr>
-  <tr><td>H</td><td><audio controls src="KOK_CC_F_08.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="H"></td></tr>
-  <tr><td>I</td><td><audio controls src="KOK_CC_F_09.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="I"></td></tr>
-  <tr><td>J</td><td><audio controls src="KOK_CC_F_10.mp3"></audio></td>
-      <td><input type="checkbox" name="voice" value="J"></td></tr>
+  <tr><td>A</td><td><audio class="voice" controls src="KOK_CC_F_01.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="A" onchange="limitSelection(this)"></td></tr>
+  <tr><td>B</td><td><audio class="voice" controls src="KOK_CC_F_02.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="B" onchange="limitSelection(this)"></td></tr>
+  <tr><td>C</td><td><audio class="voice" controls src="KOK_CC_F_03.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="C" onchange="limitSelection(this)"></td></tr>
+  <tr><td>D</td><td><audio class="voice" controls src="KOK_CC_F_04.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="D" onchange="limitSelection(this)"></td></tr>
+  <tr><td>E</td><td><audio class="voice" controls src="KOK_CC_F_05.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="E" onchange="limitSelection(this)"></td></tr>
+  <tr><td>F</td><td><audio class="voice" controls src="KOK_CC_F_06.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="F" onchange="limitSelection(this)"></td></tr>
+  <tr><td>G</td><td><audio class="voice" controls src="KOK_CC_F_07.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="G" onchange="limitSelection(this)"></td></tr>
+  <tr><td>H</td><td><audio class="voice" controls src="KOK_CC_F_08.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="H" onchange="limitSelection(this)"></td></tr>
+  <tr><td>I</td><td><audio class="voice" controls src="KOK_CC_F_09.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="I" onchange="limitSelection(this)"></td></tr>
+  <tr><td>J</td><td><audio class="voice" controls src="KOK_CC_F_10.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="J" onchange="limitSelection(this)"></td></tr>
 </table>
+
+<p class="note">※ 최대 3개까지만 선택할 수 있습니다.</p>
 
 <br>
 <div style="text-align:center;">
@@ -75,6 +116,15 @@
 </p>
 
 <script>
+function limitSelection(checkbox) {
+  const boxes = document.querySelectorAll('input[name="voice"]');
+  const checkedCount = Array.from(boxes).filter(cb => cb.checked).length;
+  if (checkedCount > 3) {
+    alert("최대 3개까지만 선택할 수 있습니다.");
+    checkbox.checked = false;
+  }
+}
+
 function downloadResults() {
   const name = document.getElementById("userName").value.trim();
   if (!name) {
@@ -105,3 +155,4 @@ function downloadResults() {
 
 </body>
 </html>
+
