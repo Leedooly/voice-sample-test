@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Voice Sample Test</title>
+<style>
+  table { border-collapse: collapse; width: 60%; margin: auto; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+  th { background-color: #f2f2f2; }
+  audio { width: 200px; }
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">음성 선호도 조사</h2>
+<p style="text-align:center;">
+
+<div style="width:60%; margin:auto; text-align:left;">
+
+현재 <b>성우의 음성을 선정</b>하고 있습니다.<br>
+아래의 <b>sample.wav</b>을 먼저 청취하신 후, A~J Voice Sample을 들어보세요. 
+</p>
+
+    🎵 <b>Sample.wav</b><br><br>
+
+    ✅ 위 샘플은 고객에게 반응이 좋았던 사례입니다.<br>
+    선정기준에 부합하고, 샘플보다 조금 더 젊은 느낌의 음색을 선택해주세요.<br><br>
+
+    <b>📌선정 기준</b><br>
+    1. 자연스럽고 안정된 발성<br>
+    2. 제품을 차분하게 설명하거나 Q&A를 진행하는 듯한 편안한 전달 방식<br><br>
+
+  </div>
+</div>
+
+<table id="voiceTable">
+  <tr>
+    <th>Voice Sample</th>
+    <th>Audio</th>
+    <th>Select</th>
+  </tr>
+
+  <tr><td>A</td><td><audio controls src="KOK_CC_F_01.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="A"></td></tr>
+  <tr><td>B</td><td><audio controls src="KOK_CC_F_02.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="B"></td></tr>
+  <tr><td>C</td><td><audio controls src="KOK_CC_F_03.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="C"></td></tr>
+  <tr><td>D</td><td><audio controls src="KOK_CC_F_04.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="D"></td></tr>
+  <tr><td>E</td><td><audio controls src="KOK_CC_F_05.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="E"></td></tr>
+  <tr><td>F</td><td><audio controls src="KOK_CC_F_06.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="F"></td></tr>
+  <tr><td>G</td><td><audio controls src="KOK_CC_F_07.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="G"></td></tr>
+  <tr><td>H</td><td><audio controls src="KOK_CC_F_08.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="H"></td></tr>
+  <tr><td>I</td><td><audio controls src="KOK_CC_F_09.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="I"></td></tr>
+  <tr><td>J</td><td><audio controls src="KOK_CC_F_10.mp3"></audio></td>
+      <td><input type="checkbox" name="voice" value="J"></td></tr>
+</table>
+
+<br>
+<div style="text-align:center;">
+  <label>참여자 이름: <input type="text" id="userName" placeholder="이름 입력"></label>
+  <button onclick="downloadResults()">제출</button>
+</div>
+
+<p style="color:blue; text-align:center;">
+  제출 후 다운로드된 <b>[이름]_results.csv</b> 파일을 아래 링크로 업로드해주세요.<br>
+  <a href="https://drive.google.com/drive/u/0/folders/1c0Vr-Ax-dnAKpMVzVIKnN1GSdw8lLAcw"
+     target="_blank" style="color:red;">[업로드하기]</a>
+</p>
+
+<script>
+function downloadResults() {
+  const name = document.getElementById("userName").value.trim();
+  if (!name) {
+    alert("이름을 입력해주세요!");
+    return;
+  }
+
+  const checked = [];
+  document.querySelectorAll('input[name="voice"]:checked').forEach(cb => {
+    checked.push(cb.value);
+  });
+
+  if (checked.length === 0) {
+    alert("최소 하나의 음성을 선택해주세요!");
+    return;
+  }
+
+  const csvContent = "data:text/csv;charset=utf-8," + checked.join("\n");
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `${name}_results.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>
