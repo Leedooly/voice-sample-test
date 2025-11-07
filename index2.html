@@ -9,26 +9,26 @@
   }
   table { 
     border-collapse: collapse; 
-    width: 60%; 
+    width: 70%; 
     margin: auto; 
   }
   th, td { 
     border: 1px solid #ddd; 
-    padding: 8px; 
+    padding: 10px; 
     text-align: center; 
   }
   th { 
     background-color: #f2f2f2; 
   }
   audio.sample { 
-    width: 180px; 
+    width: 250px; 
     vertical-align: middle;
   }
   audio.voice {
-    width: 340px;
+    width: 360px;
   }
   .content {
-    width: 60%;
+    width: 70%;
     margin: auto;
     text-align: left;
     line-height: 1.6;
@@ -56,10 +56,15 @@
     display: none !important;
   }
 
-  /* ⋮ 세 점 메뉴 제거 및 균형 유지 */
+  /* ⋮ 점 세개 메뉴 제거 및 균형 유지 */
+  audio::-webkit-media-controls-overflow-button {
+    display: none !important;
+  }
+
+  /* 전체 컨트롤 바 디자인 정돈 */
   audio::-webkit-media-controls-enclosure {
-    overflow: hidden !important;
     border-radius: 6px;
+    overflow: hidden !important;
   }
   audio::-webkit-media-controls-panel {
     overflow: hidden !important;
@@ -74,12 +79,12 @@
 
   <p>
     현재 <b>성우의 음성을 선정</b>하고 있습니다.<br>
-    아래의 <b>Sample.wav</b>을 먼저 청취하신 후, <b>A~J Voice Sample</b>을 들어보세요. 
+    아래의 <b>Sample.wav</b>을 먼저 청취하신 후, <b>A~J Voice Sample</b>을 들어보세요.
   </p>
 
   <p>
     🎵 <b>Sample.wav</b>
-    <audio class="sample" controls src="sample.wav"></audio>
+    <audio class="sample" controls controlsList="nodownload noplaybackrate" src="sample.wav"></audio>
   </p>
 
   <p>
@@ -89,7 +94,7 @@
 
   <p>
     <b>📌 선정 기준</b><br>
-    1. 제품을 차분하게 설명하거나 Q&A를 진행하는 듯한 편안한 화법 <br>
+    1. 제품을 차분하게 설명하거나 Q&A를 진행하는 듯한 편안한 화법<br>
     2. 자연스럽고 안정된 발성
   </p>
 
@@ -104,25 +109,25 @@
     <th>Select</th>
   </tr>
 
-  <tr><td>A</td><td><audio class="voice" controls src="KOK_CC_F_01.mp3"></audio></td>
+  <tr><td>A</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_01.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="A" onchange="limitSelection(this)"></td></tr>
-  <tr><td>B</td><td><audio class="voice" controls src="KOK_CC_F_02.mp3"></audio></td>
+  <tr><td>B</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_02.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="B" onchange="limitSelection(this)"></td></tr>
-  <tr><td>C</td><td><audio class="voice" controls src="KOK_CC_F_03.mp3"></audio></td>
+  <tr><td>C</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_03.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="C" onchange="limitSelection(this)"></td></tr>
-  <tr><td>D</td><td><audio class="voice" controls src="KOK_CC_F_04.mp3"></audio></td>
+  <tr><td>D</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_04.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="D" onchange="limitSelection(this)"></td></tr>
-  <tr><td>E</td><td><audio class="voice" controls src="KOK_CC_F_05.mp3"></audio></td>
+  <tr><td>E</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_05.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="E" onchange="limitSelection(this)"></td></tr>
-  <tr><td>F</td><td><audio class="voice" controls src="KOK_CC_F_06.mp3"></audio></td>
+  <tr><td>F</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_06.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="F" onchange="limitSelection(this)"></td></tr>
-  <tr><td>G</td><td><audio class="voice" controls src="KOK_CC_F_07.mp3"></audio></td>
+  <tr><td>G</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_07.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="G" onchange="limitSelection(this)"></td></tr>
-  <tr><td>H</td><td><audio class="voice" controls src="KOK_CC_F_08.mp3"></audio></td>
+  <tr><td>H</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_08.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="H" onchange="limitSelection(this)"></td></tr>
-  <tr><td>I</td><td><audio class="voice" controls src="KOK_CC_F_09.mp3"></audio></td>
+  <tr><td>I</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_09.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="I" onchange="limitSelection(this)"></td></tr>
-  <tr><td>J</td><td><audio class="voice" controls src="KOK_CC_F_10.mp3"></audio></td>
+  <tr><td>J</td><td><audio class="voice" controls controlsList="nodownload noplaybackrate" src="KOK_CC_F_10.mp3"></audio></td>
       <td><input type="checkbox" name="voice" value="J" onchange="limitSelection(this)"></td></tr>
 </table>
 
